@@ -125,6 +125,27 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+#category-menu {
+    display: flex;
+    gap: 10px; /* Espacement entre les boutons */
+    padding: 20px 0; /* Espacement autour du menu */
+    justify-content: center; /* Centrer les boutons dans le menu */
+}
+
+#category-menu li {
+    padding: 10px 20px; /* Ajuste en fonction de la taille désirée */
+    background-color: #E0E0E0; /* Couleur de fond par défaut */
+    border-radius: 20px; /* Bordures arrondies */
+    list-style: none; /* Enlève les puces de liste */
+    cursor: pointer; /* Curseur en forme de pointeur */
+    transition: background-color 0.3s; /* Transition douce pour le hover */
+}
+
+#category-menu li:hover, #category-menu li.active {
+    background-color: #1D6154; /* Couleur de fond lors du survol ou actif */
+    color: white; /* Couleur du texte lors du survol ou actif */
+	
 .gallery {
 	width: 100%;
 	display: grid;
