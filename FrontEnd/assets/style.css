@@ -30,6 +30,12 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #FFFEF8;
+}
+a {
+	cursor: pointer;
+	text-decoration: none;
+	color: black;
 }
 ol, ul {
 	list-style: none;
@@ -53,6 +59,12 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
+#loginButton {
+	text-decoration: none;
+	color: black;
+}
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -75,7 +87,6 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
@@ -128,24 +139,26 @@ li:hover {
 
 #category-menu {
     display: flex;
-    gap: 10px; /* Espacement entre les boutons */
-    padding: 20px 0; /* Espacement autour du menu */
-    justify-content: center; /* Centrer les boutons dans le menu */
+    gap: 10px; 
+    padding: 20px 0; 
+    justify-content: center; 
 }
 
 #category-menu li {
-    padding: 10px 20px; /* Ajuste en fonction de la taille désirée */
-    background-color: #E0E0E0; /* Couleur de fond par défaut */
-    border-radius: 20px; /* Bordures arrondies */
-    list-style: none; /* Enlève les puces de liste */
-    cursor: pointer; /* Curseur en forme de pointeur */
-    transition: background-color 0.3s; /* Transition douce pour le hover */
+    padding: 10px 20px; 
+    background-color: #FFFEF8; 
+    border-radius: 20px;
+	border: 1px solid #1D6154; 
+    list-style: none; 
+    cursor: pointer;
+	color: #1D6154
 }
 
 #category-menu li:hover, #category-menu li.active {
-    background-color: #1D6154; /* Couleur de fond lors du survol ou actif */
-    color: white; /* Couleur du texte lors du survol ou actif */
-	
+    background-color: #1D6154; 
+    color: white; 
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -158,34 +171,34 @@ li:hover {
 	width: 100%;
 
 }
-#contact {
+.formulaire {
 	width: 50%;
 margin: auto;
 }
-#contact > * {
+.formulaire > * {
 	text-align: center;
 
 }
-#contact h2{
+.formulaire h2{
 	margin-bottom: 20px;
 }
-#contact form {
+.formulaire form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
+.formulaire input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+.formulaire label {
 	margin: 2em 0 1em 0;
 }
-#contact textarea {
+.formulaire textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
@@ -199,6 +212,7 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
 }
 
 footer nav ul {
@@ -207,3 +221,9 @@ footer nav ul {
 	margin: 2em
 }
 
+.forgetPassword {
+	border: none;
+	background-color: #FFFEF8;
+	cursor: pointer;
+	text-decoration: underline;
+}

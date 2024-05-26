@@ -2,15 +2,12 @@
 async function fetchWorks() {
     console.log("fetchWorks is called");
     try {
-        const response = await fetch('http://localhost:5678/api/works', {
-            headers: {
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4'
-            }
-        }); // recupere les donne via l'api et utilise le token
+        const response = await fetch('http://localhost:5678/api/works') ; // recupere les donne via l'api 
         const data = await response.json(); // Attend la conversion de la réponse en JSON
         displayWorks(data); // Appelle une fonction pour traiter et afficher les données
-        generateCategoryMenu(data); // Génère le menu de catégories et ajoute le filtrage
         console.log(data);
+
+        return data;
 
     } catch (error) {
         console.error('Error fetching data:', error); // Affiche les erreurs s'il y en a
@@ -47,23 +44,49 @@ function displayWorks(data) {
 
 }
 
-function generateCategoryMenu(data) {
-    const menu = document.querySelector('#category-menu');
-    menu.innerHTML = '';
-    const categories = [
-        { name: 'Tous', filter: data },
-        { name: 'Objets', filter: data.filter(work => work.category.name === 'Objets') },
-        { name: 'Appartements', filter: data.filter(work => work.category.name === 'Appartements') },
-        { name: 'Hotels & restaurants', filter: data.filter(work => work.category.name === 'Hotels & restaurants') }
-    ];
-    categories.forEach(category => {
-        const categoryButton = document.createElement('li');
-        categoryButton.textContent = category.name;
-        categoryButton.addEventListener('click', () => {
-            displayWorks(category.filter);
-        });
-        menu.appendChild(categoryButton);
-    });
+// Fonction pour récupérer les catégories via l'API
+async function fetchCategories() {
+    try {
+        const response = await fetch ("http://localhost:5678/api/categories");
+        const categories = await response.json();
+        console.log(categories);
+        generateCategoryMenu(categories);
+
+        return categories;
+    } catch (error) {
+        console.error('error fetching categories', error);
+    }  
 }
 
+// Fonction pour générer le menu des catégories
+function generateCategoryMenu(categories) {
+    const menu = document.querySelector('#category-menu');
+    menu.innerHTML = '';
+    
+    const allButton = document.createElement('li');
+    allButton.textContent = 'Tous';
+    allButton.addEventListener('click', async () => {
+        const works = await fetchWorks()
+        displayWorks(works); // Afficher tous les travaux
+    });    
+    menu.appendChild(allButton);
+
+    for (const category of categories) {    
+    const categoryButton = document.createElement('li');
+    categoryButton.textContent = category.name;
+
+    // Attachement du gestionnaire d'événements
+    categoryButton.addEventListener('click', async () => {
+        const works = await fetchWorks();
+
+        // filtre les objet en fontion de leur Id qui a ete stocker dans les bouton implicitement lors de la creation de ladventlistner
+        const filteredWorks = works.filter(work => work.categoryId === category.id); 
+        displayWorks(filteredWorks);
+    });
+
+    menu.appendChild(categoryButton);
+    }
+   }
+
 fetchWorks();  // Ceci appelle la fonction dès que le script est exécuté
+fetchCategories();
