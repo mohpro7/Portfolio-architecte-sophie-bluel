@@ -22,12 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = "index.html"; // Redirige vers la page d'accueil
             } else {
                 errorMessage.textContent = "E-mail ou mot de passe incorrect.";
-               
+                errorMessage.style.display = "block";
             }
         } catch (error) {
             console.error("Erreur lors de la connexion:", error);
             errorMessage.textContent = "Une erreur s'est produite. Veuillez réessayer.";
-            
+            errorMessage.style.display = "block";
         }
     });
 });

@@ -7,9 +7,12 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/b7686250e1.js" crossorigin="anonymous"></script>
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="main.js" defer></script>
+	<script src="modal.js" defer></script>
 </head>
 <body>
 <header>
@@ -36,7 +39,38 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2 id="mesProjets">Mes Projets</h2>
+		<div class="pojet-modal">
+			<div class="icon-btn">
+				<i class="fa-regular fa-pen-to-square"></i>
+				<button id="modal-btn">modifier</button>
+			</div>
+		</div>
+		<div id="modal-container" class="modal-container">
+			<div id="modal-content" class="modal-content">
+				<div class="title-close">
+					<span class="back">&#x2190;</span> 
+					<span class="close-modal">&times;</span>	
+				</div>
+				<p class="title-modall">Ajout photo</p>
+				<div class="modal-contentt">
+					<div class="add-file">
+						<i class="fa-regular fa-image"></i>
+						<button class="custom-input-file">+ ajouter photo</button>
+						<input type="file" id="file-input" style="display: none;">
+						<p>jpg, png : 4mo max</p>
+					</div>
+					<div class="formulaire" id="form-addFile" >
+						<form action="#" method="post">
+							<label for="assign-title">Titre</label>
+							<input type="text" name="assign-title" id="assign-title">
+							<label for="assign-categorie">Categorie</label>
+							<input type="text" name="assign-categorie" id="assign-categorie">
+							<input type="submit" value="Envoyer">
+						</form>
+					</div>
+				</div>				
+			</div>
+		</div>
 		<ul id="category-menu"></ul>
 		<div class="gallery">
 			<figure>
@@ -99,7 +133,6 @@
 		</form>
 	</section>
 </main>
-
 <footer>
 	<nav>
 		<ul>
