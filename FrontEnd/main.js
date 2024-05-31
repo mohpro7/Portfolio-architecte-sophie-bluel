@@ -90,3 +90,13 @@ function generateCategoryMenu(categories) {
 
 fetchWorks();  // Ceci appelle la fonction dès que le script est exécuté
 fetchCategories();
+
+function verifiLogin() {
+    const authToken = localStorage.getItem('authToken');
+    const displayBtn = document.getElementById('modal-btn')
+    if (!authToken) {
+        displayBtn.style.display = 'none';
+    } else {
+        displayBtn.style.display = 'block'
+    }
+}

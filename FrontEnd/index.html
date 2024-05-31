@@ -48,24 +48,37 @@
 			<div id="modal-content" class="modal-content">
 				<div class="title-close">
 					<span class="back">&#x2190;</span> 
-					<span class="close-modal">&times;</span>	
+					<span class="close-modal">&times;</span>
 				</div>
-				<p class="title-modall">Ajout photo</p>
-				<div class="modal-contentt">
-					<div class="add-file">
-						<i class="fa-regular fa-image"></i>
-						<button class="custom-input-file">+ ajouter photo</button>
-						<input type="file" id="file-input" style="display: none;">
-						<p>jpg, png : 4mo max</p>
+				<div id="modal-1" class="modal-1 body-modal-content" >
+					<div class="title-modal">
+						<p>Galerie photo</p>
 					</div>
-					<div class="formulaire" id="form-addFile" >
-						<form action="#" method="post">
-							<label for="assign-title">Titre</label>
-							<input type="text" name="assign-title" id="assign-title">
-							<label for="assign-categorie">Categorie</label>
-							<input type="text" name="assign-categorie" id="assign-categorie">
-							<input type="submit" value="Envoyer">
-						</form>
+					<div class="remove-picture">
+						<!-- Les miniatures seront insérées ici dynamiquement -->
+					</div>
+					<button class="btn-add-picture-modal-1">Ajouter une photo</button>
+				</div>
+				<div id="modal-2" class="modal-2">
+					<div class="title-modal">
+						<p class="modal-2">Ajout photo</p>
+					</div>
+					<div class="body-modal-content">
+						<div class="add-file">
+							<i class="fa-regular fa-image"></i>
+							<button class="custom-input-file">+ ajouter photo</button>
+							<input type="file" id="file-input" style="display: none;">
+							<p>jpg, png : 4mo max</p>
+						</div>
+						<div class="formulaire" id="form-addFile" >
+							<form action="#" method="post">
+								<label for="assign-title">Titre</label>
+								<input type="text" name="assign-title" id="assign-title">
+								<label for="assign-categorie">Categorie</label>
+								<input type="text" name="assign-categorie" id="assign-categorie">
+								<input type="submit" value="Envoyer">
+							</form>
+						</div>
 					</div>
 				</div>				
 			</div>
