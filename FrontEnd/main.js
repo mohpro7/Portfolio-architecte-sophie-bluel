@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', function() {
+    verifiLogin(); // Appelle la fonction pour vérifier si on est connecter ou non
+});
+
 // fonction pour recuperer les données de l'api
 async function fetchWorks() {
     console.log("fetchWorks is called");
@@ -93,10 +97,15 @@ fetchCategories();
 
 function verifiLogin() {
     const authToken = localStorage.getItem('authToken');
-    const displayBtn = document.getElementById('modal-btn')
+    const displayBtn = document.getElementById('modal-btn');
+    const iconModifier = document.querySelector('.fa-pen-to-square');
     if (!authToken) {
+        console.log("aucun token");
         displayBtn.style.display = 'none';
+        iconModifier.style.display = 'none';
     } else {
-        displayBtn.style.display = 'block'
+        console.log("token trouvé");
+        displayBtn.style.display = 'block';
+        iconModifier.style.display = 'block';
     }
 }

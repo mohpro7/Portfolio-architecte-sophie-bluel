@@ -27,7 +27,13 @@ document.addEventListener('DOMContentLoaded', () =>{
             image.src = work.imageUrl;
             image.alt = `Image de ${work.title}`;
 
+            const deleteIcon = document.createElement('i');
+            deleteIcon.classList.add('fa-solid', 'fa-trash-can');
+            deleteIcon.addEventListener('click', () => deleteImage(work.id)); // le click sur la poubelle lance la fonction delet
+
+            
             figure.appendChild(image);
+            figure.appendChild(deleteIcon);
             modalPicture.appendChild(figure);
 
         });
