@@ -109,3 +109,7 @@ function verifiLogin() {
         iconModifier.style.display = 'block';
     }
 }
+
+window.addEventListener('unload', function() {
+    localStorage.removeItem('authToken');
+}); // ajout d'une suppression du token afin de devoir se reconnecter a chaque nouvelle ouverture du navigateur
