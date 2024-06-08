@@ -67,4 +67,25 @@ document.addEventListener('DOMContentLoaded', () =>{
         }
     });
 
+    async function deleteImage(workId) {
+        if (confirm('Êtes-vous sûr de vouloir supprimer cette image ?')) {
+            try {
+                const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+                    method: 'DELETE'
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Failed to delete the work');
+                }
+    
+                // Suppression réussie, rafraîchir la liste des œuvres
+                const works = await fetchWorks();
+                displayWorksInModal(works);
+            } catch (error) {
+                console.error('Error deleting work:', error);
+                alert('Une erreur est survenue lors de la suppression de l\'œuvre.');
+            }
+        }
+    }
+
 });
