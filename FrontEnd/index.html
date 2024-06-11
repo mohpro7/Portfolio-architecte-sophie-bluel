@@ -11,8 +11,9 @@
 	<script src="https://kit.fontawesome.com/b7686250e1.js" crossorigin="anonymous"></script>
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="main.js" defer></script>
 	<script src="modal.js" defer></script>
+	<script src="main.js" defer></script>
+	
 </head>
 <body>
 <header>
@@ -22,6 +23,7 @@
 			<li><a href="#mesProjets">projets</li></a>
 			<li><a href="#contact">formulaire</li></a>
 			<li><a id="loginButton" href="login.html">Login</a></li>
+			<li><a id="logoutButton" href="#" style="display: none;">Logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -50,32 +52,35 @@
 					<span class="back">&#x2190;</span> 
 					<span class="close-modal">&times;</span>
 				</div>
-				<div id="modal-1" class="modal-1 body-modal-content" >
+				<div id="modal-remove-file" class="modal-remove-file body-modal-content" >
 					<div class="title-modal">
 						<p>Galerie photo</p>
 					</div>
 					<div class="remove-picture">
 						<!-- Les miniatures seront insérées ici dynamiquement -->
 					</div>
-					<button class="btn-add-picture-modal-1">Ajouter une photo</button>
+					<button class="btn-add-picture-modal-remove-file">Ajouter une photo</button>
 				</div>
-				<div id="modal-2" class="modal-2">
+				<div id="modal-add-file" class="modal-add-file">
 					<div class="title-modal">
-						<p class="modal-2">Ajout photo</p>
+						<p class="modal-add-file">Ajout photo</p>
 					</div>
 					<div class="body-modal-content">
 						<div class="add-file">
 							<i class="fa-regular fa-image"></i>
 							<button class="custom-input-file">+ ajouter photo</button>
 							<input type="file" id="file-input" style="display: none;">
+							<img id="image-preview" src="" alt="Aperçu de l'image" style="display: none; max-width: 100%; height: auto;">
 							<p>jpg, png : 4mo max</p>
 						</div>
 						<div class="formulaire" id="form-addFile" >
-							<form action="#" method="post">
+							<form id="image-form" action="#" method="post">
 								<label for="assign-title">Titre</label>
-								<input type="text" name="assign-title" id="assign-title">
+								<input type="text" name="assign-title" id="assign-title" required>
 								<label for="assign-categorie">Categorie</label>
-								<input type="text" name="assign-categorie" id="assign-categorie">
+								<select id="assign-categorie" name="assign-categorie" required>
+									<!-- Les options seront remplies par le code JavaScript -->
+								</select>
 								<input type="submit" value="Envoyer">
 							</form>
 						</div>

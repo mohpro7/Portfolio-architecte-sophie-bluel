@@ -55,11 +55,23 @@ async function fetchCategories() {
         const categories = await response.json();
         console.log(categories);
         generateCategoryMenu(categories);
+        categorySelect(categories);
 
         return categories;
     } catch (error) {
         console.error('error fetching categories', error);
     }  
+}
+
+function categorySelect(categories) {
+    const select = document.getElementById('assign-categorie');
+    select.innerHTML = '';
+    categories.forEach(category => {
+        const option = document.createElement('option');
+        option.value = category.id;
+        option.textContent = category.name;
+        select.appendChild(option);
+    });
 }
 
 // Fonction pour générer le menu des catégories
@@ -100,16 +112,30 @@ function verifiLogin() {
     const displayBtn = document.getElementById('modal-btn');
     const iconModifier = document.querySelector('.fa-pen-to-square');
     if (!authToken) {
-        console.log("aucun token");
         displayBtn.style.display = 'none';
         iconModifier.style.display = 'none';
+        loginButton.style.display = 'block';
+        logoutButton.style.display = 'none';
     } else {
         console.log("token trouvé");
         displayBtn.style.display = 'block';
         iconModifier.style.display = 'block';
+        loginButton.style.display = 'none';
+        logoutButton.style.display = 'block';
     }
 }
 
-window.addEventListener('unload', function() {
+
+
+window.verifiLogin = verifiLogin;
+
+const logoutButton = document.getElementById('logoutButton');
+logoutButton.addEventListener('click', () => {
     localStorage.removeItem('authToken');
-}); // ajout d'une suppression du token afin de devoir se reconnecter a chaque nouvelle ouverture du navigateur
+    localStorage.removeItem('refreshToken');
+    verifiLogin();
+});
+
+verifiLogin();
+
+
